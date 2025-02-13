@@ -44,15 +44,20 @@ function updateWeatherUI(data) {
   document.querySelector(".wind").innerHTML = data.wind.speed + " km/h";
 
   const weatherCondition = data.weather[0].main.toLowerCase();
-  const weatherImages = {
-    clouds: "./public/images/clouds.png",
-    clear: "./public/images/clear.png",
-    rain: "./public/images/rain.png",
-    drizzle: "./public/images/drizzle.png",
-    mist: "./public/images/mist.png",
-  };
 
-  weatherIcon.src = weatherImages[weatherCondition] || "./public/images/clear.png";
+  if (weatherCondition === "clouds") {
+    weatherIcon.src = "images/clouds.png";
+  } else if (weatherCondition === "clear") {
+    weatherIcon.src = "images/clear.png";
+  } else if (weatherCondition === "rain") {
+    weatherIcon.src = "images/rain.png";
+  } else if (weatherCondition === "drizzle") {
+    weatherIcon.src = "images/drizzle.png";
+  } else if (weatherCondition === "mist") {
+    weatherIcon.src = "images/mist.png";
+  } else {
+    weatherIcon.src = "images/clear.png"; // Default image
+  }
 }
 
 // Function to get the user's location
